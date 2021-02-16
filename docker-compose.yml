@@ -1,0 +1,18 @@
+version: "3"
+
+services: 
+    webapp:
+        container_name: exampleapp
+        restart: always
+        build: .
+        ports: 
+            - "3000:3000"
+        links:
+            - database
+        volumes: 
+            - .:/app
+    database:
+        container_name: mymongodb
+        image: mongo
+        logging: 
+            driver: none
